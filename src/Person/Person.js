@@ -1,11 +1,11 @@
 import React from "react";
 
 const person = props => {
-  const {name, age} = props;
+  const {name, age, click} = props;
   return (
   <div>
-    <p>I'm {name} and I am {age} years old!</p>
-    <p>{props.children}</p>
+    <p onClick={click}>I'm {name} and I am {age} years old!</p>
+    <p onClick={click}>{props.children}</p>
   </div>
   )
 }
