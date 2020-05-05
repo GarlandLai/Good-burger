@@ -3,12 +3,17 @@ import "./Person.css";
 import Radium from "radium";
 
 const person = props => {
-  const {name, age, click, changed, id} = props;
+  const {name, age, click, changed } = props;
+  const style = {
+    '@media (min-width: 500px)': {
+      width: "450px"
+    }
+  };
   return (
-  <div className="Person">
+  <div className="Person" style={style}>
     <p onClick={click}>I'm {name} and I am {age} years old!</p>
     <p onClick={click}>{props.children}</p>
-    <input id={id} type="text" onChange={changed} value={props.name}/>
+    <input type="text" onChange={changed} value={props.name}/>
   </div>
   )
 }
