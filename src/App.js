@@ -6,7 +6,10 @@ class App extends Component {
   state = {
     persons: [
       {id: 0, name: "Garland", age: 31},
-      {id: 1, name: "Leah", age: 30}
+      {id: 1, name: "Leah", age: 30},
+      {id: 2, name: "Ponzu", age: 10},
+      {id: 3, name: "Hobbes", age: 4},
+      {id: 4, name: "Calvin", age: 3}
     ], 
     otherState: "some other value",
     showPersons: false
@@ -40,9 +43,9 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: "inherit",
-      fontWeight:"600",
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer"
@@ -62,11 +65,21 @@ class App extends Component {
           })}
         </div>
       );
+        style.backgroundColor = "red";
     };
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
+
     return (
       <div className="App"> 
         <h1>Hi, I'm a React Application</h1>
-        <p>Its working, YAY!</p>
+        <p className={classes.join(" ")}>Its working, YAY!</p>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
