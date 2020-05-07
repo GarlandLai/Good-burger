@@ -44,6 +44,8 @@ class App extends Component {
 
   render() {
     let persons = null;
+    // adding button variable to use for dynamically adding class to apply
+    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -57,6 +59,8 @@ class App extends Component {
           })}
         </div>
       );
+      // dynamically update class 
+      btnClass = classes.Red;
     };
 
     const assignedClasses = [];
@@ -71,7 +75,7 @@ class App extends Component {
      <div className={classes.App}> 
       <h1>Hi, I'm a React Application</h1>
       <p className={assignedClasses.join(" ")}>Its working, YAY!</p>
-      <button className={classes.Button} onClick={this.togglePersonsHandler}>Toggle Persons</button>          
+      <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>          
       {persons}
      </div>
     );
