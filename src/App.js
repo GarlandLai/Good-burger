@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// added options in css-loader in config (prod and dev) allow us to import classes below
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -58,19 +59,19 @@ class App extends Component {
       );
     };
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      assignedClasses.push(classes.bold);
     }
 
     return (
-     <div className="App"> 
+     <div className={classes.App}> 
       <h1>Hi, I'm a React Application</h1>
-      <p className={classes.join(" ")}>Its working, YAY!</p>
-      <button className="button" onClick={this.togglePersonsHandler}>Toggle Persons</button>          
+      <p className={assignedClasses.join(" ")}>Its working, YAY!</p>
+      <button className={classes.Button} onClick={this.togglePersonsHandler}>Toggle Persons</button>          
       {persons}
      </div>
     );
