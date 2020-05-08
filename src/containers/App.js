@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // added options in css-loader in config (prod and dev) allow us to import classes below
 import classes from './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
