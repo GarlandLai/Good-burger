@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // added options in css-loader in config (prod and dev) allow us to import classes below
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+// import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
@@ -45,41 +47,23 @@ class App extends Component {
 
   render() {
     let persons = null;
-    // adding button variable to use for dynamically adding class to apply
-    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            // To use ErrorBoundary, Wrap Person with it and add key to it. Keys must be on it since we must map the outer element
-            return <Person
-              key={person.id}
-              click={() => this.deletePersonHandler(index)} 
-              name={person.name}
-              age={person.age} 
-              changed={(event) => this.nameChangedHandler(event, person.id)}/>
-          })}
-        </div>
+          <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}/>
       );
-      // dynamically update class 
-      btnClass = classes.Red;
     };
 
-    const assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
-    }
-
     return (
-     <div className={classes.App}> 
-      <h1>Hi, I'm a React Application</h1>
-      <p className={assignedClasses.join(" ")}>Its working, YAY!</p>
-      <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>          
-      {persons}
-     </div>
+      <div className={classes.App}>
+        <Cockpit 
+        showPersons={this.state.showPersons} 
+        persons={this.state.persons} 
+        clicked={this.togglePersonsHandler}/>
+        {persons}
+      </div>
     );
   }
 } 
