@@ -2,7 +2,7 @@ import React from 'react';
 import Person from "./Person/Person";
 
 const persons = (props) => {
-  console.log("persons rendered");
+  console.log("persons.js rendered");
   return props.persons.map((person, index) => {
     return <Person
       key={person.id}
