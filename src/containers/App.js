@@ -28,6 +28,16 @@ class App extends Component {
   componentDidMount() {
     console.log("app.js componentDidMount");
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("App shouldComponentUpdate")
+    // set to true get rid of warning. It defaults to true always
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log("App componentDidUpdate");
+  }
   
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons]; 
