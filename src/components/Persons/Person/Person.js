@@ -3,7 +3,7 @@ import classes from "./Person.css";
 
 const person = props => {
   const {name, age, click, changed } = props;
-  
+  console.log("person rendered")
   return (
     <div className={classes.Person}>
     <p onClick={click}>I'm {name} and I am {age} years old!</p>
