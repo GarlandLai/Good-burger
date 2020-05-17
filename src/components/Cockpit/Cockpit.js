@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+  useEffect(()=> {
+    console.log("Cockpit useEffect Fired");
+    setTimeout(()=> {
+      alert('Testing useEffect functionality')
+    }, 1000)
+    // You can add an empty array to only run on first load
+  }, [props.persons])
+
   const assignedClasses = [];
   let btnClass = "";
   if (props.showPersons) {
