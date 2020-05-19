@@ -1,23 +1,29 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from "./Person/Person";
 
-class Persons extends Component {
-
+class Persons extends PureComponent {
   // // Don't need this if we dont have state. It will fire though since its part of creation lifecycle
   // static getDerivedStateFromProps(props, state) {
   //   console.log(" Persons getDerivedStateFromProps");
   //   return state;
   // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("persons.js shouldComponentUpdate");
-    // this is a shallow comparison. It compares pointer in memory and not actual values
-    if (nextProps.persons !== this.props.persons ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
+  // PureComponents includes all props check, so you dont need shouldComponentUpdate if you want to compare all props.
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("persons.js shouldComponentUpdate");
+  //   // this is a shallow comparison. It compares pointer in memory and not actual values
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked
+  //     ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   getSnapshotBeforeUpdate(prevProps, nextState) {
     console.log("persons.js getSnapshotBeforeUpdate");
