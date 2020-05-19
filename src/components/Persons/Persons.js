@@ -9,9 +9,14 @@ class Persons extends Component {
   //   return state;
   // }
 
-  shouldComponentUpdate() {
+  shouldComponentUpdate(nextProps, nextState) {
     console.log("persons.js shouldComponentUpdate");
-    return true;
+    // this is a shallow comparison. It compares pointer in memory and not actual values
+    if (nextProps.persons !== this.props.persons ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getSnapshotBeforeUpdate(prevProps, nextState) {
