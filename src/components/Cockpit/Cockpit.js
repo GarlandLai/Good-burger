@@ -7,9 +7,21 @@ const cockpit = (props) => {
     console.log("Cockpit useEffect Fired");
     setTimeout(()=> {
       alert('Testing useEffect functionality')
-    }, 1000)
-    // You can add an empty array to only run on first load
-  }, [props.persons])
+    }, 1000);
+    // Can return something/function in use effects
+    return () => {
+      console.log("cockpit cleanup work in useEffect")
+    }
+    // You can add an empty array to only run on first loads or unmounts
+  }, [])
+
+  // Cleanup function with not dependency so it runs after every update
+  useEffect(()=> {
+    console.log("Cockpit 2nd UseEffect");
+    return () => {
+      console.log("cockpit cleanup work in 2nd useEffect")
+    }
+  })
 
   const assignedClasses = [];
   let btnClass = "";
