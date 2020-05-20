@@ -8,11 +8,9 @@ class Person extends Component {
     console.log("person.js rendered")
     return (
       <Aux>
-      {/* <div className={classes.Person}> */}
-      <p onClick={click}>I'm {name} and I am {age} years old!</p>
-      <p onClick={click}>{this.props.children}</p>
-      <input type="text" onChange={changed} value={name}/>
-      {/* </div> */}
+        <p onClick={click}>I'm {name} and I am {age} years old!</p>
+        <p onClick={click}>{this.props.children}</p>
+        <input type="text" onChange={changed} value={name}/>
       </Aux>
     ) 
   }
