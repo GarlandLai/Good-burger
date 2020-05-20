@@ -5,6 +5,16 @@ import withClass from '../../../hoc/withClass';
 import PropTypes from "prop-types";
 
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+
+  componentDidMount() {
+    // this.inputElement.focus();
+    this.inputElementRef.current.focus();
+  }
+
   render() {
     const {name, age, click, changed } = this.props;
     console.log("person.js rendered")
@@ -12,7 +22,13 @@ class Person extends Component {
       <Aux>
         <p onClick={click}>I'm {name} and I am {age} years old!</p>
         <p onClick={click}>{this.props.children}</p>
-        <input type="text" onChange={changed} value={name}/>
+        <input 
+          // ref={(input)=> {this.inputElement = input}}
+          ref={this.inputElementRef}
+          type="text" 
+          onChange={changed}
+          value={name}
+        />
       </Aux>
     ) 
   }
