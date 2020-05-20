@@ -10,7 +10,8 @@ import React from 'react';
 const withClass = (WrappedComponent, className) => {
   return props => (
     <div className={className}>
-      <WrappedComponent />
+      {/* Needs to set each individual prop. prop={prop} makes it ONE prop only. */}
+      <WrappedComponent {...props}/>
     </div>
   );
 }

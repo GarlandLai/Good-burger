@@ -6,9 +6,9 @@ const cockpit = (props) => {
   useEffect(()=> {
     console.log("Cockpit useEffect Fired");
     setTimeout(()=> {
-      alert('Testing useEffect functionality')
+      console.log('Testing useEffect functionality')
     }, 1000);
-    // Can return something/function in use effects
+    // Can return Something/function in use effects
     return () => {
       console.log("cockpit cleanup work in useEffect")
     }
