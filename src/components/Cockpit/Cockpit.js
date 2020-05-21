@@ -1,13 +1,16 @@
-import React, { useEffect, memo } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+  
 
   useEffect(()=> {
     console.log("Cockpit useEffect Fired");
-    setTimeout(()=> {
-      console.log('Testing useEffect functionality')
-    }, 1000);
+    // setTimeout(()=> {
+    //   console.log('Testing useEffect functionality')
+    // }, 1000);
+    toggleBtnRef.current.click();
     // Can return Something/function in use effects
     return () => {
       console.log("cockpit cleanup work in useEffect")
@@ -39,7 +42,7 @@ const cockpit = (props) => {
     <div className={classes.Cockpit}>
     <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>Its working, YAY!</p>
-      <button className={btnClass} onClick={props.clicked}>Toggle Persons</button>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>Toggle Persons</button>
     </div>
   );
 };
